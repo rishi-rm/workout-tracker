@@ -9,29 +9,29 @@ app.use(cors())
 
 connectDB()
 
-app.get("/", (req, res) => { res.send("api running") })
+app.get("/ping", (_req, res) => res.status(200).send("pong")); // for UptimeRobot
+
+app.get("/", (req, res) => { res.send("api running") });
 
 app.post("/workouts", async (req, res) => {
-    const { exercise, weight, reps, date } = req.body
+  const { exercise, weight, reps, date } = req.body;
 
-    try {
-        const updated = await Workout.findOneAndUpdate(
-            {exercise, date},
-            {weight, reps},
-            {upsert: true, new: true}
-        )
-   
-        res.status(201).json({
-            message: "Workout logged",
-            data: updated
-        })
-    } catch (e) {
-        res.status(500).json({
-            message: "Server error"
-        })
-    }
-})
+  try {
+    const updated = await Workout.findOneAndUpdate(
+      { exercise, date },
+      { weight, reps },
+      { upsert: true, new: true }
+    );
 
+    res.status(201).json({
+      message: "Workout logged",
+      data: updated
+    });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ message: "Server error" });
+  }
+});
 app.get("/workouts/today/:date", async (req, res) => {
     const { date } = req.params
     try {
