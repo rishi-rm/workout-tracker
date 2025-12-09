@@ -4,12 +4,12 @@ export default function App() {
   const URL = "https://workout-tracker-2-c1g2.onrender.com"
   const userName = "Rishabh"
   const split = {
-    1: ["Lat pulldows", "Rows", "Back extension", "Bicep curls", "Hammer curls"],
-    2: ["incline db press", 'pec flys', 'shoulder db press', 'lateral raises', 'rear delt flys'],
+    1: ["Lat pulldows", "Rows", "Back extension", "Bicep curls", "Hammer curls", 'rear delt flys'],
+    2: ["incline db press", 'pec flys', 'shoulder db press', 'lateral raises', 'tricep push down', 'tricep overhead'],
     3: ['shrugs', 'hack squats', 'hamstring curls', 'calf raises'],
     4: [],
-    5: ["Lat pulldows", "Rows", "Back extension", "Bicep curls", "Hammer curls"],
-    6: ["incline db press", 'pec flys', 'shoulder db press', 'lateral raises', 'rear delt flys'],
+    5: ["Lat pulldows", "Rows", "Back extension", "Bicep curls", "Hammer curls", 'rear delt flys'],
+    6: ["incline db press", 'pec flys', 'shoulder db press', 'lateral raises', 'tricep push down', 'tricep overhead'],
     7: []
   }
 
