@@ -9,7 +9,7 @@ app.use(cors())
 
 connectDB()
 
-app.get("/", () => { res.send("api running") })
+app.get("/", (req, res) => { res.send("api running") })
 
 app.post("/workouts", async (req, res) => {
     const { exercise, weight, reps, date } = req.body
