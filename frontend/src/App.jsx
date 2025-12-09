@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 export default function App() {
-  const URL = "https://workout-tracker-2-c1g2.onrender.com/"
+  const URL = "https://workout-tracker-2-c1g2.onrender.com"
   const userName = "Rishabh"
   const split = {
     1: ["Lat pulldows", "Rows", "Back extension", "Bicep curls", "Hammer curls"],
@@ -181,7 +181,7 @@ export default function App() {
 
             if (!weight || !reps) continue
 
-            await fetch("${URL}/workouts", {
+            await fetch(`${URL}/workouts`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json"
