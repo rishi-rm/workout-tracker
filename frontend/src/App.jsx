@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 
 export default function App() {
+  const URL = "https://workout-tracker-2-c1g2.onrender.com/"
   const userName = "Rishabh"
   const split = {
     1: ["Lat pulldows", "Rows", "Back extension", "Bicep curls", "Hammer curls"],
@@ -45,7 +46,7 @@ export default function App() {
 
   useEffect(() => {
     const fetchTodayData = async () => {
-      const res = await fetch(`http://localhost:5000/workouts/today/${selectedDate}`)
+      const res = await fetch(`${URL}/workouts/today/${selectedDate}`)
       const data = await res.json()
 
       console.log(data)
@@ -67,7 +68,7 @@ export default function App() {
   const mappedDay = selectedDayNumber === 0 ? 7 : selectedDayNumber
   useEffect(() => {
     split[mappedDay].forEach(async (exercise) => {
-      const res = await fetch(`http://localhost:5000/workouts/lastweek/${exercise}?date=${selectedDate}`)
+      const res = await fetch(`${URL}/workouts/lastweek/${exercise}?date=${selectedDate}`)
 
       const json = await res.json()
 
@@ -180,7 +181,7 @@ export default function App() {
 
             if (!weight || !reps) continue
 
-            await fetch("http://localhost:5000/workouts", {
+            await fetch("${URL}/workouts", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json"
