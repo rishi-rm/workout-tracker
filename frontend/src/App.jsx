@@ -111,7 +111,7 @@ export default function App() {
           ←
         </div>
         {/* workout details */}
-        <div {...handlers} className="bg-white drop-shadow-lg rounded-xl pb-8  w-[80%] p-4">
+        <div {...handlers} className="bg-white drop-shadow-lg rounded-xl pb-8 min-h-[25rem]  w-[80%] p-4 border-2 border-purple-100">
           <div className="font-bold text-2xl mt-4">
             Workout Details
           </div>
@@ -121,6 +121,9 @@ export default function App() {
           <div>
             <ul className="flex flex-col gap-2">
               {
+                split[mappedDay].length===0?<div className="text-xl font-semibold text-gray-400 text-center mt-16">
+                  Rest for today.
+                </div>:
                 split[mappedDay].map((exercise, key) => (
                   <li key={key}>
                     <div>{exercise.charAt(0).toUpperCase() + exercise.slice(1)}</div>
