@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useSwipeable } from 'react-swipeable';
 
 export default function App() {
   const URL = "https://workout-tracker-2-c1g2.onrender.com"
@@ -66,6 +67,17 @@ export default function App() {
     fetchTodayData()
   }, [selectedDate])
 
+  const handlers = useSwipeable({
+    onSwiped: (eventData) => {
+      if (eventData.dir === 'Right') {
+        setSelectedDate(prev => addDays(prev, -1))
+      }else if(eventData.dir === 'Left'){
+        setSelectedDate(prev => addDays(prev, 1))
+      }
+    },
+    trackMouse: true
+  })
+
   const selectedDayNumber = new Date(selectedDate).getDay()
   const mappedDay = selectedDayNumber === 0 ? 7 : selectedDayNumber
   useEffect(() => {
@@ -99,7 +111,7 @@ export default function App() {
           ←
         </div>
         {/* workout details */}
-        <div className="bg-white drop-shadow-lg rounded-xl pb-8  w-[80%] p-4">
+        <div {...handlers} className="bg-white drop-shadow-lg rounded-xl pb-8  w-[80%] p-4">
           <div className="font-bold text-2xl mt-4">
             Workout Details
           </div>
@@ -204,7 +216,7 @@ export default function App() {
             })
           }
           setSubmitDone(true)
-          setTimeout(()=>{
+          setTimeout(() => {
             setSubmitDone(false)
           }, 3000)
           console.log("done")
