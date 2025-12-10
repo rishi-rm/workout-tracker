@@ -19,6 +19,8 @@ export default function App() {
   //   "Shoulder db press" : "15 6"
   // }
 
+  const [submitDone, setSubmitDone] = useState(false)
+
   const [inputs, setInputs] = useState({})
 
   const [lastWeek, setLastWeek] = useState({})
@@ -93,7 +95,7 @@ export default function App() {
         <p className="text-white">Log today's grind.</p>
       </div>
       <div className="flex items-center justify-around">
-        <div className="text-2xl" onClick={() => setSelectedDate(prev => addDays(prev, -1))}>
+        <div className="text-2xl cursor-pointer" onClick={() => setSelectedDate(prev => addDays(prev, -1))}>
           ←
         </div>
         {/* workout details */}
@@ -151,13 +153,20 @@ export default function App() {
           </div>
         </div>
         {!isToday ?
-          <div className="text-2xl" onClick={() => {setSelectedDate(prev => addDays(prev, 1))
+          <div className="text-2xl cursor-pointer" onClick={() => {
+            setSelectedDate(prev => addDays(prev, 1))
             console.log(selectedDate, " ", todayISO)
           }}>
             →
           </div> : <div className="text-2xl opacity-0">→</div>
         }
       </div>
+      {
+        submitDone &&
+        <div className="text-sm text-green-500 font-semibold -mb-4 -mt-2">
+          Submit done!
+        </div>
+      }
       <button
         className="
         w-[20rem]
@@ -194,7 +203,10 @@ export default function App() {
               })
             })
           }
-
+          setSubmitDone(true)
+          setTimeout(()=>{
+            setSubmitDone(false)
+          }, 3000)
           console.log("done")
         }}
       >
