@@ -20,6 +20,9 @@ export default function App() {
   //   "Shoulder db press" : "15 6"
   // }
 
+
+  const secretKey = localStorage.getItem("SECRET_KEY")
+
   const [submitDone, setSubmitDone] = useState(false)
 
   const [inputs, setInputs] = useState({})
@@ -49,7 +52,12 @@ export default function App() {
 
   useEffect(() => {
     const fetchTodayData = async () => {
-      const res = await fetch(`${URL}/workouts/today/${selectedDate}`)
+      const res = await fetch(`${URL}/workouts/today/${selectedDate}`, {
+        headers:{
+          "x-api-key": secretKey,
+          "Content-Type": "application/json"
+        }
+      })
       const data = await res.json()
 
       console.log(data)
@@ -82,7 +90,12 @@ export default function App() {
   const mappedDay = selectedDayNumber === 0 ? 7 : selectedDayNumber
   useEffect(() => {
     split[mappedDay].forEach(async (exercise) => {
-      const res = await fetch(`${URL}/workouts/lastweek/${exercise}?date=${selectedDate}`)
+      const res = await fetch(`${URL}/workouts/lastweek/${exercise}?date=${selectedDate}`, {
+        headers:{
+          "x-api-key": secretKey,
+          "Content-Type": "application/json"
+        }
+      })
 
       const json = await res.json()
 
@@ -208,6 +221,7 @@ export default function App() {
             await fetch(`${URL}/workouts`, {
               method: "POST",
               headers: {
+                "x-api-key":secretKey,
                 "Content-Type": "application/json"
               },
               body: JSON.stringify({

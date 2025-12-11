@@ -7,7 +7,19 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+// E3gOuXj/o6eyJCjtj1x3vJrWh/1l+YeuwGDwatICWh0=
+
 connectDB()
+
+app.use((req, res, next)=>{
+    const clientKey = req.headers["x-api-key"]
+
+    if(!clientKey || clientKey!==process.env.SECRET_KEY){
+        return res.status(403).json({message:"Forbidden"})
+    }
+
+    next()
+})
 
 app.get("/ping", (_req, res) => res.status(200).send("pong")); // for UptimeRobot
 
