@@ -7,7 +7,6 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-// E3gOuXj/o6eyJCjtj1x3vJrWh/1l+YeuwGDwatICWh0=
 
 connectDB()
 
