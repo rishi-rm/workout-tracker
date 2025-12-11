@@ -17,7 +17,7 @@ export default function Setup() {
       <button
         className="px-4 py-2 bg-indigo-600 text-white rounded shadow"
         onClick={() => {
-          localStorage.setItem("WORKOUT_SECRET", value);
+          localStorage.setItem("SECRET_KEY", value);
           alert("Secret saved to this device!");
         }}
       >
