@@ -117,7 +117,9 @@ export default function Home() {
       {/* heading */}
       <div className="p-6 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 h-[8rem] w-screen bg-pink-400 rounded-br-2xl rounded-bl-2xl text-center flex flex-col gap-4">
         <h1 className="font-bold text-3xl text-white">Hey, {userName}</h1>
-        <p className="text-white">Log today's grind.</p>
+        <p className="text-white">Log today's grind.
+            {secretKey}
+        </p>
       </div>
       <div className="flex items-center justify-around">
         <div className="text-2xl cursor-pointer" onClick={() => setSelectedDate(prev => addDays(prev, -1))}>
