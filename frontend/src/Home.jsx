@@ -121,8 +121,8 @@ export default function Home() {
             {
                 goodToGo ? <>
                     <div className="p-6 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 h-[8rem] w-screen bg-pink-400 rounded-br-2xl rounded-bl-2xl text-center flex flex-col gap-4">
-                        <h1 className="font-bold text-3xl text-white">Workout Tracker. {userName}</h1>
-                    </div>
+                        <h1 className="font-bold text-3xl text-white">Workout Tracker.</h1>
+                                            </div>
                     <div className="flex items-center justify-around">
                         <div className="text-2xl cursor-pointer" onClick={() => setSelectedDate(prev => addDays(prev, -1))}>
                             ←
